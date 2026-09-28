@@ -23,7 +23,7 @@ export function SiteHeader({ onBuy }: SiteHeaderProps) {
       <div className="announcement">
         <span>Um carinho a mais para a rotina de quem você ama</span>
         <span className="announcement-divider" aria-hidden="true">✦</span>
-        <span>Oferta ilustrativa de lançamento</span>
+        <span>Oferta ilustrativa • frete a definir na loja real</span>
       </div>
       <header className="site-header">
         <div className="container-shell header-inner">
