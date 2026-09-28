@@ -25,7 +25,7 @@ function Index() {
 
   return <>
     <SiteHeader onBuy={openCheckout} />
-    <main>
+    <main id="conteudo" tabIndex={-1}>
       <Hero />
       <CredibilityStrip />
       <Benefits />

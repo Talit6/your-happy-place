@@ -19,6 +19,7 @@ export function SiteHeader({ onBuy }: SiteHeaderProps) {
 
   return (
     <>
+      <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
       <div className="announcement">
         <span>Um carinho a mais para a rotina de quem você ama</span>
         <span className="announcement-divider" aria-hidden="true">✦</span>
