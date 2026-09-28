@@ -1,24 +1,41 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { SiteHeader } from "@/components/landing/site-header";
+import { PurchaseDialog } from "@/components/landing/purchase-dialog";
+import { FaqSection } from "@/components/landing/faq-section";
+import { Benefits, ClosingCTA, CredibilityStrip, Hero, Offer, SiteFooter, Story, Testimonials } from "@/components/landing/sections";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "PataFeliz | Mais alegria na rotina do seu pet" },
+      { name: "description", content: "Conheça o Kit PataFeliz, uma proposta demonstrativa para transformar passeios, brincadeiras e cuidados em momentos especiais com seu pet." },
+      { property: "og:title", content: "PataFeliz | Mais alegria na rotina do seu pet" },
+      { property: "og:description", content: "Uma proposta cheia de carinho para transformar a rotina do seu pet em mais momentos juntos. Conheça o Kit PataFeliz." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const openCheckout = () => setCheckoutOpen(true);
+
+  return <>
+    <SiteHeader onBuy={openCheckout} />
+    <main id="conteudo" tabIndex={-1}>
+      <Hero />
+      <CredibilityStrip />
+      <Benefits />
+      <Story />
+      <Offer onBuy={openCheckout} />
+      <Testimonials />
+      <FaqSection />
+      <ClosingCTA />
+    </main>
+    <SiteFooter />
+    <PurchaseDialog open={checkoutOpen} onOpenChange={setCheckoutOpen} />
+  </>;
 }
